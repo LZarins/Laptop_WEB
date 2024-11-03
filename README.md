@@ -18,7 +18,7 @@ Bilde, Bilde1, Bilde2: URLs for images of the laptop, providing multiple views.
 The table is set up with an AUTO_INCREMENT on Laptop_ID, ensuring each entry has a unique identifier. This table serves as the core database for storing the main information on each laptop model.
 
 
-2. wish_list.sql
+wish_list.sql
 
 This file defines a table named wish_list, which enables users to save laptops they are interested in. It includes:
 id: Unique identifier for each wish list entry.
