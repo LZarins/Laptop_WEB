@@ -1,0 +1,28 @@
+action.php
+Handles AJAX requests to filter laptops based on user-selected criteria. 
+It retrieves specific models, types, RAM, processors, and video cards as set by the user through checkboxes. 
+The filtered results are then displayed in a responsive card layout, with each laptop entry offering a link to view its details and an option to add it to a wishlist.
+
+dataB.php
+Defines database connection parameters and establishes a connection to a MySQL database. 
+This file is essential for database-related operations across the website, allowing the site to pull and update laptop information in the main pages and wishlist.
+
+index.php
+Serves as the main entry page for the laptop store. This page:
+Includes a product filter sidebar, allowing users to narrow down laptops by type, model, RAM, processor, and video card.
+Fetches and displays all laptops from the database and updates dynamically with AJAX for each filter selection.
+Provides a responsive and styled layout using Bootstrap for the product gallery, with options to view laptop details or add items to a wishlist.
+
+single_laptop.php
+Displays detailed information for a single laptop selected from the main page. 
+It retrieves specific specifications, images, and descriptions from the database, using a carousel to showcase multiple images of the laptop. 
+Additionally, users can view links to external sites (e.g., "salīdzini.lv" and Amazon) for availability and add the laptop to their wishlist.
+
+upgrade.php
+Provides a reusable navigation bar for the laptop store site, including links to the home page and wishlist. 
+This file is styled with custom CSS for an interactive menu and is included across pages for consistent navigation.
+
+wish_list.php
+Manages the wishlist feature of the website. 
+Users can add or remove laptops from their wishlist, with each action generating a status message for success or failure. 
+The wishlist is displayed in a card format with an image, laptop details, and options to remove items from the list.
