@@ -1,7 +1,10 @@
 <html>
 <head>
-<link rel="shortcut icon" href="https://icon-library.com/images/icon-for-laptop/icon-for-laptop-28.jpg">
+<!-- Sets the icon for the webpage -->	
+<link rel="shortcut icon" href="https://icon-library.com/images/icon-for-laptop/icon-for-laptop-28.jpg">	
+<!-- Title of the page -->	
 <title>Velmju saraksts</title>
+<!-- Character encoding and responsive design meta tags -->	
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -12,17 +15,20 @@
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script><br>
   <?php
-require_once "upgrade.php";
-require_once "dataB.php";
+require_once "upgrade.php"; // include navigation bar
+require_once "dataB.php"; // include database connection
 ?>
   <style>
+    /* Style for product images */ 	  
     .product-img{
       width:100%;
       height:auto;
     }
+    /* Style for shadow effect around cards */ 	  
     .card-shadow{
       box-shadow: 5px 5px 2px #696969;
     }
+    /* Style for the "z-index" positioning of elements */	  
     .z-10{
     z-index:100000;
     position: absolute;
@@ -31,12 +37,15 @@ require_once "dataB.php";
   }
     </style>
 </head>
-<body style="background: lightgrey">		
+<body style="background: lightgrey">	
+			<!-- Header for the wishlist page -->
 			<h1 class="container" style="text-align: center">Velmju saraksts</h1>
+	    		<!-- Horizontal line divider -->
 			<div class="container">
                         <hr style="height:1px; width:100%; border-width:0; background-color:grey">
 
 <?php
+// Add a laptop to the wishlist if the 'add' parameter is set
 if (!empty($_GET["add"])) {
   $sql = 'INSERT INTO wish_list (Laptop_ID) VALUES ('. $_GET["add"].')';
   if ($conn->query($sql) == TRUE) {
@@ -46,7 +55,7 @@ if (!empty($_GET["add"])) {
     echo $conn->query($sql);
   }
 }
-
+// Remove a laptop from the wishlist if the 'remove' parameter is set
 if ( !empty($_GET["remove"])) {
     $sql = 'DELETE FROM wish_list WHERE Laptop_ID = '.$_GET["remove"];
     if ($conn->query($sql) == TRUE) {
@@ -60,10 +69,11 @@ if ( !empty($_GET["remove"])) {
 
 
 
-
+        // Fetch all laptops in the wishlist
 	$sql = 'SELECT DISTINCT * FROM wish_list JOIN Laptop ON Laptop.Laptop_ID = wish_list.Laptop_ID';
   $result = $conn->query($sql);
 	if ($result->num_rows > 0) {
+    // Loop through each laptop and display its details		
     while($row = $result->fetch_assoc()) {
       echo '
       <div class="row">
@@ -83,6 +93,7 @@ if ( !empty($_GET["remove"])) {
            Videokarte : '.$row['Videokarte'].'<br>
            RAM : '.$row['RAM'].'<br>
            </p>
+	   <!-- Button to remove the laptop from the wishlist -->
            <a href="wish_list.php?remove='.$row['Laptop_ID'].'" class="btn btn-info btn-block z-10">Noņemt no velmju saraksta</a>
           </div>
          </div>
@@ -92,6 +103,7 @@ if ( !empty($_GET["remove"])) {
       ';
     }    
     } else{
+      // Display a message if the wishlist is empty		
       echo '<div class="alert alert-danger" role="alert">
         <strong>Velmju saraksts pašlaik ir tukšs!</strong>
       </div>';
