@@ -1,6 +1,4 @@
 # Laptop_WEB
-Web page for my technical schools final project about laptops.
-
 This website is designed to serve as a centralized platform for browsing and comparing laptops. Users can view detailed information on different laptop models, including specifications, images, and links to purchase options, catering to users interested in gaming, work, and study laptops. The website allows users to add laptops to a personalized "wish list" for easy reference, saving their preferred laptops for later review or purchase.
 
 
