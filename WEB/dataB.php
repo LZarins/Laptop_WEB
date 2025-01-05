@@ -13,7 +13,17 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 
 // Check if the connection was successful
 if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
+    logEvent('ERROR', "Connection failed: " . $conn->connect_error);
+    die("Connection failed: " . $conn->connect_error);
+} else {
+    logEvent('INFO', "Database connection established.");
+}
+
+// Function for logging events
+function logEvent($level, $message) {
+    $timestamp = date('Y-m-d H:i:s');
+    $logMessage = "[$timestamp] [$level] $message\n";
+    file_put_contents('logs/events.log', $logMessage, FILE_APPEND);
 }
 ?>
 <br>
