@@ -1,10 +1,14 @@
 <html>
 <head>
+<!-- Add a icon to the webpage -->
 <link rel="shortcut icon" href="https://icon-library.com/images/icon-for-laptop/icon-for-laptop-28.jpg">
+<!-- Include external PHP files for database connection and other functionalities -->
 <?php
- require 'dataB.php';
- include "upgrade.php" ?>
+ require 'dataB.php'; // Includes the database connection file
+ include "upgrade.php" ?> // Include navigation bar
+  <!-- Set the viewport for responsive design -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Set the title of the webpage -->
   <title>Laptop vaikals</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
@@ -14,6 +18,7 @@
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <style>
+   /* Custom styles for positioning and design */
   .z-10{
     z-index:100000;
     position: absolute;
@@ -33,6 +38,7 @@
    user-select: none;
 }
 
+/* Tooltip styles for the "burbul" class */
 .burbul .burbultext {
   visibility: hidden;
   width: 160px;
@@ -77,13 +83,16 @@
   </style>
 </head>
 <body style="background: lightgrey">
+  <!-- Page Header -->
   <h3 class="text-center text-light bg-success p-2">Laptopu veikals</h3>
+  <!-- Main Container -->
   <div class="container-fluid">
    <div class="row">
+    <!-- Filter Sidebar -->
     <div class="col-lg-3">
       <font size="+1"><b>Produkta filtrs</b></font>
       <hr>
-      
+       <!-- Filter by Laptop Type -->
        <h6 class="text-success">Portatīvā tips<h6>
       <ul class="list-group">
       <?php
@@ -102,7 +111,7 @@
        <?php } ?>
       </ul>
       
-      
+      <!-- Additional Filters for Model, RAM, Processor, Graphics Card -->
       <h6 class="text-success">Modelis<h6>
       <ul class="list-group">
       <?php
@@ -179,7 +188,7 @@
        <?php } ?>
       </ul>
       
-      
+      <!-- Product Display Section -->
       </div>
       <div class="col-lg-9">
         <font size="+1"><b><span id="textChange">Visi produkti</span></b></font>
@@ -197,7 +206,8 @@
           while($row=$result->fetch_assoc()){
           $Laptop_ID = $row['Laptop_ID'];
         ?>
-         
+
+        <!-- Display each laptop in a card -->
         <div class="col-md-3 mb-2" style="color: blue">
          <div class="card-deck h-100">
           <div class="card boarder-secondary">
@@ -226,6 +236,7 @@
     </div>
    </div>
   </div>
+  <!-- JavaScript for AJAX-based filtering -->     
   <script type"text/javascript">
    $(document).ready(function(){
    
@@ -238,7 +249,8 @@
       var RAM = get_filter_text('RAM');
       var Procesors = get_filter_text('Procesors');
       var Videokarte = get_filter_text('Videokarte');
-      
+
+      // AJAX request to filter products
       $.ajax({
        url:'action.php',
        method:'POST',
@@ -260,7 +272,8 @@
      return filterData;
      }
      });
-     
+
+     // Function to toggle the visibility of the tooltip (popup)
      function myFunction() {
   var popup = document.getElementById("burbul");
   popup.classList.toggle("show");
